@@ -1,0 +1,5 @@
+backend/env
+backend/src/__pycache__
+backend/db.sqlite3
+frontend/app/node_modules
+backend/.vscode
