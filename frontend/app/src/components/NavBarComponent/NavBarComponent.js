@@ -1,44 +1,46 @@
 import React, { Component } from 'react';
-import {Navbar, Nav} from 'react-bootstrap';
-import {Link} from 'react-router-dom';
+import { Button} from 'react-bootstrap';
 import {connect} from 'react-redux';
+import { Link } from 'react-router-dom';
+import './NavBarComponent.scss';
+import logo from "../../media/img/logo.jpg";
 
 class NavBarComponent extends Component {
     state = {  }
     render() { 
         return ( 
-            <Navbar bg="dark" variant="dark">
-                <Navbar.Brand><Link to="/">Pogodni Użytkownicy</Link></Navbar.Brand>
-                <Nav className="mr-auto">
-                <Nav.Link><Link to="/">Główna</Link></Nav.Link>
-                <Nav.Link><Link to="/users-list">Lista użytkowników</Link></Nav.Link>   
-                {this.props.isLoggedIn ? 
+            <>
+                <nav id="nav-bar-container">
+                    {this.props.isLoggedIn ? 
                     (
                         <>
-                            Witaj {this.props.emailOfUserLoggedIn}
-                            <Nav.Link><Link to="/my-account">Moje konto</Link></Nav.Link>
-                            <Nav.Link><Link to="/logout">Wyloguj</Link></Nav.Link>
+                            <Link to="/"><img src={logo} alt="Logo" /></Link>
+                            <div>
+                                <p>Witaj {this.props.emailOfUserLoggedIn}</p>
+                                <Link to="/logout">Wyloguj</Link>
+                            </div>
                         </>
                     )
                     :
                     (
                         <>
-                            <Nav.Link><Link to="/register">Załóż konto</Link></Nav.Link>
-                            <Nav.Link><Link to="/login">Zaloguj się</Link></Nav.Link>
+                            <Link to="/register"><Button variant={"info"}>Załóż konto już teraz!</Button></Link>
+                            <Link to="/"><img src={logo} alt="Logo" /></Link>
+                            <Link to="/login"><Button variant={"info"}>Zaloguj się</Button></Link>
                         </>
                     )
-                }
-                {/* <Nav.Link>Kontakt</Nav.Link> */}
-                </Nav>
-            </Navbar>
-         );
+                    }
+                </nav>
+            </>
+        );
     }
 }
  
 const mapStateToProps = state => {
     return {
         isLoggedIn:state.isLoggedIn,
-        emailOfUserLoggedIn:state.emailOfUserLoggedIn
+        emailOfUserLoggedIn:state.emailOfUserLoggedIn,
+        isLoggedInUserIsAdmin:state.isLoggedInUserIsAdmin
     }
 }
 

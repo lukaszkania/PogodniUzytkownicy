@@ -4,6 +4,7 @@ import axios from 'axios';
 import USERS_API_URL from '../../../constants/USERS_API_URL';
 import {Redirect} from 'react-router-dom';
 import { LENGTH } from '../../../constants/PASSWORD_GENERATOR_REQUIREMENTS';
+import './EditUserFormComponent.scss';
 
 class EditUserFormComponent extends Component {
     state = { 
@@ -75,6 +76,7 @@ class EditUserFormComponent extends Component {
 
     render() { 
         return ( 
+            <section id="edit-user-form-container">
                 <Form onSubmit={this.onSubmit}>
                     {/* First NAME */}
                     <Form.Group controlId="formBasicEmail">
@@ -129,6 +131,7 @@ class EditUserFormComponent extends Component {
                     {/* REDIRECT */}
                     {this.state.redirect ? (<Redirect to={this.state.redirectPath}/>):("")}
                 </Form>
+            </section>
          );
     }
 }

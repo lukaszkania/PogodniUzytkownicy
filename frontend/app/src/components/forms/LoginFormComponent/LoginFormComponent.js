@@ -4,8 +4,8 @@ import {Form, Button} from 'react-bootstrap';
 import {connect} from 'react-redux';
 import USERS_API_URL from '../../../constants/USERS_API_URL';
 import { AUTH_SUCCESS } from '../../../constants/ACTION_TYPES';
-import {Link} from 'react-router-dom';
 import {Redirect} from 'react-router-dom';
+import "./LoginFormComponent.scss";
 
 class LoginFormComponent extends Component {
     state = { 
@@ -20,7 +20,6 @@ class LoginFormComponent extends Component {
         this.setState({
             [eventTarget]:eventValue
         })
-        console.log(this.props.location)
     } 
 
     // Authentication
@@ -53,26 +52,26 @@ class LoginFormComponent extends Component {
 
     render() { 
         return ( 
-            <Form onSubmit={this.onSubmit}>
-                <Form.Group controlId="formBasicEmail">
-                    <Form.Label>Adres email</Form.Label>
-                    <Form.Control name="email" type="email" placeholder="Wprowadź swój email" onChange={this.onChange}/>
-                </Form.Group>
+            <section id="log-in-form-container">
+                <Form onSubmit={this.onSubmit}>
+                    <Form.Group controlId="formBasicEmail">
+                        <Form.Label>Adres email</Form.Label>
+                        <Form.Control name="email" type="email" placeholder="Wprowadź swój email" onChange={this.onChange}/>
+                    </Form.Group>
 
-                <Form.Group controlId="formBasicPassword">
-                    <Form.Label>Hasło</Form.Label>
-                    <Form.Control name="password" type="password" placeholder="Hasło" onChange={this.onChange}/>
-                </Form.Group>
-                <Button variant="primary" type="submit">
-                    Zaloguj
-                </Button>
-                <Form.Group>
-                    <Form.Label><Link to={`/register`}>Nie masz jeszcze konta? Zarejestruj się.</Link></Form.Label>
-                </Form.Group>
+                    <Form.Group controlId="formBasicPassword">
+                        <Form.Label>Hasło</Form.Label>
+                        <Form.Control name="password" type="password" placeholder="Hasło" onChange={this.onChange}/>
+                    </Form.Group>
 
-                {/* REDIRECTION */}
-                {this.state.redirect ? (<Redirect to="/"/>):("")}
-            </Form>
+                    <Button variant="primary" type="submit">
+                        Zaloguj
+                    </Button>
+                    
+                    {/* REDIRECTION */}
+                    {this.state.redirect ? (<Redirect to="/"/>):("")}
+                </Form>
+            </section>
          );
     }
 }

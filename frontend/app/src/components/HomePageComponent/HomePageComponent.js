@@ -1,16 +1,21 @@
 import React, { Component } from 'react';
 import {connect} from 'react-redux';
+import "./HomePageComponent.scss";
+import { Button} from 'react-bootstrap';
+import {Link} from 'react-router-dom';
 
 // /
 class HomePageComponent extends Component {
     state = {  }
     render() { 
         return ( 
-            <>
-            Home Page Component
-            {this.props.isLoggedIn ? (<div>Jestes zalogowany</div>):(<div>Nie jestes zalogowany</div>)}
-            {this.props.isLoggedInUserIsAdmin ? (<div>Jestes zalogowany jako admin</div>):(<div>Nie jestes zalogowany jako admin</div>)}
-            </>
+            <section id="home-page-container">
+                <article>
+                    <h1>Pogodni Użytkownicy - miejsce gdzie pogodna nigdy Cie nie zaskoczy!</h1>
+                    <Link to="/users-list"><Button variant={"success"}>Lista użytkowników</Button></Link>      
+                    <a href="https://lukaszkania.github.io/"><Button variant={"success"}>Kontakt</Button></a> 
+                </article>            
+            </section>
          );
     }
 }

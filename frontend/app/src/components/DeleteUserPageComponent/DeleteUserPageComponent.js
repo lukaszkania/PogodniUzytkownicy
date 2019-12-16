@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import DeleteUserComponent from '../DeleteUserComponent/DeleteUserComponent';
+import './DeleteUserPageComponent.scss';
 
 class DeleteUserPageComponent extends Component {
     state = { 
@@ -7,7 +8,9 @@ class DeleteUserPageComponent extends Component {
      }
     render() { 
         return ( 
-            <DeleteUserComponent userId={this.state.userId} />
+            <section id="delete-confirmation-container">
+                <DeleteUserComponent userId={this.state.userId} />
+            </section>
          );
     }
 }

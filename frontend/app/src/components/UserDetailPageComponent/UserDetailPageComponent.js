@@ -4,6 +4,7 @@ import USERS_API_URL from '../../constants/USERS_API_URL';
 import {Card} from 'react-bootstrap';
 import WeatherWidgetComponent from '../WeatherWidgetComponent/WeatherWidgetComponent';
 import {connect} from 'react-redux';
+import "./UserDetailPageComponent.scss";
 
 class UserDetailPageComponent extends Component {
     state = { 
@@ -23,7 +24,7 @@ class UserDetailPageComponent extends Component {
 
     render() { 
         return ( 
-            <>
+            <section id="user-detail-container">
                 <Card>
                     <Card.Title>Użytkownik: </Card.Title>
                     <Card.Text>{this.state.userObject.email}</Card.Text>
@@ -41,7 +42,7 @@ class UserDetailPageComponent extends Component {
                         :
                         ("Administrator")}
                     </Card.Text>
-                </Card>
+                
                 {this.props.isLoggedIn ? 
                 (
                     <WeatherWidgetComponent />
@@ -54,7 +55,8 @@ class UserDetailPageComponent extends Component {
                     </>
                 )
                 }
-            </>
+                </Card>
+            </section>
          );
     }
 }

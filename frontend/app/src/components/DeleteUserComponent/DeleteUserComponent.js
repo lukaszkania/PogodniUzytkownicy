@@ -33,14 +33,13 @@ class DeleteUserComponent extends Component {
 
     render() { 
         return ( 
-        <>
-            Are You sure You want to delete user: {this.state.userId}
+        <section id="delete-confirmation-container">
+            <h3>Czy na pewno chcesz usunąć użytkownika o id: {this.state.userId}?</h3>
             <Button variant={"primary"} title={"Usuń"} onClick={this.onClickConfirmButton}>Tak</Button>
             <Button variant={"danger"} title={"Zabierz mnie stąd"} onClick={this.onClickCancelButton}>Nie</Button>
             {/* REDIRECT */}
             {this.state.redirect ? (<Redirect to={this.state.redirectPath} />):("")}
-        </>
-
+        </section>
          );
     }
 }

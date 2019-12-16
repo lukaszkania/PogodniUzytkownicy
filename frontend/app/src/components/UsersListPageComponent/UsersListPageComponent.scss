@@ -1,0 +1,21 @@
+#users-list-container{
+    width: 60%;
+    text-align: center;
+    margin:0 auto;
+    margin-top: 5em;
+    .accordion{
+        margin:0.5em 0;
+        .card{
+            .card-header{
+                button:hover{
+                    text-decoration: none;
+                }
+            }
+            i{
+                font-size: 2em;
+                margin: 0 1em 0 0;
+                color: yellowgreen;
+            }
+        }
+    }
+}

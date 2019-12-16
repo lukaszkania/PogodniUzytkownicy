@@ -12,37 +12,37 @@ import DeleteUserPageComponent from './components/DeleteUserPageComponent/Delete
 import LoginPageComponent from './components/LoginPageComponent/LoginPageComponent';
 import {connect} from 'react-redux';
 import LogOutPageComponent from './components/LogOutPageComponent/LogOutPageComponent';
-
+import "./App.scss";
 
 class App extends Component {
   render() { 
     return ( 
       <Router>
         <Switch>
-          <div className='App'>
-            <NavBarComponent />
-            <Route exact path="/" component={HomePageComponent}/>
-            <Route exact path="/users-list" component={UsersListPageComponent}/>
-            <Route exact path="/user/detail/:userId" component={UserDetailPageComponent}/>
+            <div id="main-container">
+              <NavBarComponent />
+              <Route exact path="/" component={HomePageComponent}/>
+              <Route exact path="/users-list" component={UsersListPageComponent}/>
+              <Route exact path="/user/detail/:userId" component={UserDetailPageComponent}/>
 
-            {this.props.isLoggedIn ? 
-            (
-              <>
-                <Route exact path="/edit" component={EditUserPageComponent}/>
-                <Route exact path="/user/edit/:userId" component={EditUserPageComponent}/>
-                <Route exact path="/user/delete/:userId" component={DeleteUserPageComponent}/>
-                <Route exact path="/logout" component={LogOutPageComponent} />
-              </>
-            )
-            :
-            (
-              <>
-                <Route exact path="/login" component={LoginPageComponent}/>
-                <Route exact path="/register" component={RegisterPageComponent}/>
-                <Route exact path="/register/succes" component={RegisterSuccesInfoComponent}/>
-              </>
-            )}
-          </div>
+              {this.props.isLoggedIn ? 
+              (
+                <>
+                  <Route exact path="/edit" component={EditUserPageComponent}/>
+                  <Route exact path="/user/edit/:userId" component={EditUserPageComponent}/>
+                  <Route exact path="/user/delete/:userId" component={DeleteUserPageComponent}/>
+                  <Route exact path="/logout" component={LogOutPageComponent} />
+                </>
+              )
+              :
+              (
+                <>
+                  <Route exact path="/login" component={LoginPageComponent}/>
+                  <Route exact path="/register" component={RegisterPageComponent}/>
+                  <Route exact path="/register/succes" component={RegisterSuccesInfoComponent}/>
+                </>
+              )}
+            </div>
         </Switch>
       </Router>
      );
@@ -56,4 +56,3 @@ const mapStateToProps = state => {
 }
 
 export default connect(mapStateToProps)(App);
-

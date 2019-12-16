@@ -3,6 +3,7 @@ import axios from 'axios';
 import {WEATHER_API_URL, API_WEATHER_KEY} from '../../constants/WEATHER_API_URL';
 import { FormGroup, Form, FormControl} from 'react-bootstrap';
 import WeatherWidget from '../WeatherWidget/WeatherWidget';
+import "./WeatherWidgetComponent.scss";
 
 class WeatherWidgetComponent extends Component {
     state = { 
@@ -48,36 +49,36 @@ class WeatherWidgetComponent extends Component {
                 [elementToChange.id]:textContentToOverwrite
             })
         }
+    }
+
+    // Handlig relase zip in input range type to avoid to many requests
+    onRangeZipRelase = event => {
+        this.onChange(event);
         this.getDataFromAPI();
 
     }
 
     render() { 
-        return ( 
-            <>
+        return (
+            <section id="weather-widget-container">
                 <Form>                    
                     <FormGroup>
-                    <Form.Text id="lat" type="text">Szerokość geograficzna:{this.state.latRange}</Form.Text>
+                    <Form.Text id="lat" type="text">Szerokość geograficzna: {this.state.latRange}</Form.Text>
                     </FormGroup>
-                    <FormControl id="latRange" type="range" min="-90" max="90" step="0.01" defaultValue="50" onChange={this.onChange}></FormControl> 
+                    <FormControl id="latRange" type="range" min="-90" max="90" step="0.01" defaultValue="50" onChange={this.onChange} onMouseUp={this.onRangeZipRelase} onTouchEnd={this.onRangeZipRelase}></FormControl> 
                     <FormGroup>
-                    <Form.Text id="lon" type="text">Długość geograficzna:{this.state.lonRange}</Form.Text>
+                    <Form.Text id="lon" type="text">Długość geograficzna: {this.state.lonRange}</Form.Text>
                     </FormGroup>
-                    <FormControl id="lonRange" type="range" min="-180" max="180" step="0.01" defaultValue="50" onChange={this.onChange}></FormControl> 
-
+                    <FormControl id="lonRange" type="range" min="-180" max="180" step="0.01" defaultValue="50" onChange={this.onChange} onMouseUp={this.onRangeZipRelase} onTouchEnd={this.onRangeZipRelase}></FormControl> 
                     <FormGroup>
-                    <Form.Text id="date" type="text">Data:{this.state.dateRange}</Form.Text>
+                    <Form.Text id="date" type="text">Data: {this.state.dateRange}</Form.Text>
                     </FormGroup>
                     <FormControl id="dateRange" type="range" min="0" max={this.state.forecastArr.length -1} step="1" defaultValue="0" onChange={this.onChange}></FormControl> 
                 </Form>
-                 <WeatherWidget weatherDateObject={this.state.currentWeatherDateObject} />
-            </>
+                <WeatherWidget weatherDateObject={this.state.currentWeatherDateObject} />
+            </section>
          );
     }
 }
  
 export default WeatherWidgetComponent;
-
-
-
-

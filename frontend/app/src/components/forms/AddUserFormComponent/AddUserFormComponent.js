@@ -6,6 +6,7 @@ import axios from 'axios';
 import USERS_API_URL from '../../../constants/USERS_API_URL';
 import {Redirect, Link} from 'react-router-dom';
 import { generatePassword } from '../../../constants/FUNCTIONS';
+import "./AddUserFormComponent.scss";
 
 class AddUserFormComponent extends Component {
     // State handling data about user used to be registered from inputs
@@ -87,61 +88,60 @@ class AddUserFormComponent extends Component {
 
     render() { 
         return ( 
-            <Form id="add-user-form" onSubmit={this.onSubmit}>
-                {/* First NAME */}
-                <Form.Group controlId="formBasicEmail">
-                    <Form.Label>Imię</Form.Label>
-                    <Form.Control name="firstName" type="text" placeholder="Wprowadź swoje imię" required={true} onChange={this.onChange}/>
-                </Form.Group>
+            <section id="add-user-form-container">
+                <Form id="add-user-form" onSubmit={this.onSubmit}>
+                    {/* First NAME */}
+                    <Form.Group controlId="formBasicEmail">
+                        <Form.Label>Imię</Form.Label>
+                        <Form.Control name="firstName" type="text" placeholder="Wprowadź swoje imię" required={true} onChange={this.onChange}/>
+                    </Form.Group>
 
-                {/* LAST NAME */}
-                <Form.Group controlId="formBasicEmail">
-                    <Form.Label>Nazwisko</Form.Label>
-                    <Form.Control name="lastName" type="text" placeholder="Wprowadź swoje nazwisko" required={true} onChange={this.onChange}/>
-                </Form.Group>
+                    {/* LAST NAME */}
+                    <Form.Group controlId="formBasicEmail">
+                        <Form.Label>Nazwisko</Form.Label>
+                        <Form.Control name="lastName" type="text" placeholder="Wprowadź swoje nazwisko" required={true} onChange={this.onChange}/>
+                    </Form.Group>
 
-                {/* CITY */}
-                <Form.Group controlId="formBasicEmail">
-                    <Form.Label>Miasto</Form.Label>
-                    <Form.Control name="city" type="text" placeholder="Wprowadź nazwe swojego miasta" required={true} onChange={this.onChange}/>
-                </Form.Group>
+                    {/* CITY */}
+                    <Form.Group controlId="formBasicEmail">
+                        <Form.Label>Miasto</Form.Label>
+                        <Form.Control name="city" type="text" placeholder="Wprowadź nazwe swojego miasta" required={true} onChange={this.onChange}/>
+                    </Form.Group>
 
-                {/* COUNTRY */}
-                <Form.Group controlId="formBasicEmail">
-                    <Form.Label>Kraj</Form.Label>
-                    <Form.Control name="country" type="text" placeholder="Wprowadź nazwe swojego kraju" required={true} onChange={this.onChange}/>
-                </Form.Group>
+                    {/* COUNTRY */}
+                    <Form.Group controlId="formBasicEmail">
+                        <Form.Label>Kraj</Form.Label>
+                        <Form.Control name="country" type="text" placeholder="Wprowadź nazwe swojego kraju" required={true} onChange={this.onChange}/>
+                    </Form.Group>
 
-                {/* EMAIL */}
-                <Form.Group controlId="formBasicEmail">
-                    <Form.Label>Email</Form.Label>
-                    <Form.Control name="email" type="email" placeholder="Wprowadź swój email" required={true} onChange={this.onChange}/>
-                    <Form.Text className="text-muted">
-                        Do jednego email'a możliwe jest przypisanie tylko jednego użytkownika.
-                    </Form.Text>
-                </Form.Group>
+                    {/* EMAIL */}
+                    <Form.Group controlId="formBasicEmail">
+                        <Form.Label>Email</Form.Label>
+                        <Form.Control name="email" type="email" placeholder="Wprowadź swój email" required={true} onChange={this.onChange}/>
+                        <Form.Text className="text-muted">
+                            Do jednego email'a możliwe jest przypisanie tylko jednego użytkownika.
+                        </Form.Text>
+                    </Form.Group>
 
-                {/* IS SUPER USER */}
-                <Form.Group controlId="formBasicEmail">
-                    <Form.Label>Uprawnienia administratorskie:</Form.Label>
-                    <Form.Check name="isSuperUser" type="checkBox" onChange={this.onChange} checked={this.state.isSuperUser}/>
-                </Form.Group>
+                    {/* IS SUPER USER */}
+                    <Form.Group controlId="formBasicEmail">
+                        <Form.Label>Uprawnienia administratorskie:</Form.Label>
+                        <Form.Check name="isSuperUser" type="checkBox" onChange={this.onChange} checked={this.state.isSuperUser}/>
+                    </Form.Group>
 
-                <Button variant="primary" type="submit">
-                    Dodaj
-                </Button>
+                    <Button variant="primary" type="submit">
+                        Dodaj
+                    </Button>
 
-                <Form.Group>
-                    <Form.Label><Link to="/login">Masz już konto? Zaloguj się!</Link></Form.Label>
-                </Form.Group>
-                {/* REDIRECTION */}
-                {this.state.redirect ? (<Redirect to={{pathname: this.state.pathToRedirect, state:{registerDate:this.state.registerDate, email:this.state.email, password:this.state.password}}}/>):(<Redirect to={"/register"}/>)}
-            </Form>
+                    <Form.Group>
+                        <Form.Label><Link to="/login">Masz już konto? Zaloguj się!</Link></Form.Label>
+                    </Form.Group>
+                    {/* REDIRECTION */}
+                    {this.state.redirect ? (<Redirect to={{pathname: this.state.pathToRedirect, state:{registerDate:this.state.registerDate, email:this.state.email, password:this.state.password}}}/>):(<Redirect to={"/register"}/>)}
+                </Form>
+            </section>
          );
     }
 }
  
 export default AddUserFormComponent;
-
-
-
